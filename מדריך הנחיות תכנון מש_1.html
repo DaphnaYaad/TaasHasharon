@@ -1,0 +1,1471 @@
+
+<!-- saved from url=(0174)file:///C:/Users/daphna/Downloads/%D7%9E%D7%93%D7%A8%D7%99%D7%9A_%D7%94%D7%A0%D7%97%D7%99%D7%95%D7%AA_%D7%AA%D7%9B%D7%A0%D7%95%D7%9F_%D7%9E%D7%A2%D7%95%D7%93%D7%9B%D7%9F.html -->
+<html lang="he" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מדריך הנחיות תכנון מש/1</title>
+<link href="./מדריך הנחיות תכנון מש_1_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-light: #1a3260;
+    --gold: #c9a84c;
+    --gold-light: #e8c96e;
+    --cream: #f5f0e8;
+    --sand: #e8dfc8;
+    --text: #1a1a2e;
+    --text-muted: #4a4a6a;
+    --green: #2d6a4f;
+    --amber: #b5451b;
+    --purple: #4a3f6b;
+    --card-bg: #ffffff;
+    --border: #d4c9b0;
+    --edit-accent: #1a7a4a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    direction: rtl;
+  }
+
+  .header {
+    background: var(--navy);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 32px;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .header-badge {
+    width: 48px; height: 48px;
+    background: var(--gold);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; flex-shrink: 0;
+  }
+
+  .header-text h1 { font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+  .header-text p { font-size: 12px; color: var(--gold-light); font-weight: 300; margin-top: 2px; }
+
+  .header-stats { margin-right: auto; display: flex; gap: 24px; align-items: center; }
+
+  .stat-pill {
+    text-align: center;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 8px; padding: 6px 16px;
+  }
+  .stat-pill .num { font-size: 20px; font-weight: 700; color: var(--gold); display: block; }
+  .stat-pill .lbl { font-size: 10px; color: rgba(255,255,255,0.6); }
+
+  .admin-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.5);
+    border-radius: 8px; padding: 6px 14px;
+    font-family: 'Heebo', sans-serif; font-size: 12px;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .admin-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .admin-btn.active { background: var(--edit-accent); border-color: var(--edit-accent); color: white; }
+
+  .edit-banner {
+    background: var(--edit-accent); color: white;
+    text-align: center; padding: 8px 32px;
+    font-size: 13px; font-weight: 600;
+    display: none; gap: 12px; align-items: center; justify-content: center;
+  }
+  .edit-banner.visible { display: flex; }
+  .edit-banner .tip { font-weight: 300; opacity: 0.85; font-size: 12px; }
+
+  .export-btn {
+    background: white; color: var(--edit-accent);
+    border: none; border-radius: 6px; padding: 4px 14px;
+    font-family: 'Heebo', sans-serif; font-size: 12px; font-weight: 700;
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .export-btn:hover { opacity: 0.85; }
+  .exit-btn {
+    background: #c0392b; color: white;
+    border: none; border-radius: 6px; padding: 4px 14px;
+    font-family: 'Heebo', sans-serif; font-size: 12px; font-weight: 700;
+    cursor: pointer;
+  }
+
+  .search-bar {
+    background: var(--navy-light); padding: 12px 32px;
+    display: flex; gap: 12px; align-items: center;
+  }
+  .search-wrap { flex: 1; position: relative; }
+  .search-input {
+    width: 100%; background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(201,168,76,0.3); border-radius: 8px;
+    padding: 8px 16px 8px 40px; color: white;
+    font-family: 'Heebo', sans-serif; font-size: 14px; outline: none;
+  }
+  .search-input::placeholder { color: rgba(255,255,255,0.4); }
+  .search-input:focus { border-color: var(--gold); background: rgba(255,255,255,0.15); }
+  .search-icon {
+    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    color: rgba(255,255,255,0.4); font-size: 16px; pointer-events: none;
+  }
+  .filter-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-tag {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7); border-radius: 20px; padding: 4px 12px;
+    font-size: 12px; cursor: pointer; transition: all 0.2s;
+    font-family: 'Heebo', sans-serif;
+  }
+  .filter-tag:hover, .filter-tag.active {
+    background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 600;
+  }
+
+  .layout { display: flex; min-height: calc(100vh - 130px); }
+
+  .sidebar {
+    width: 280px; flex-shrink: 0; background: var(--navy); padding: 20px 0;
+    overflow-y: auto; height: calc(100vh - 130px); position: sticky; top: 130px;
+  }
+  .sidebar-section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--gold);
+    padding: 0 20px; margin-bottom: 8px; text-transform: uppercase;
+  }
+  .chapter-nav-item {
+    padding: 10px 20px; cursor: pointer; border-right: 3px solid transparent;
+    transition: all 0.2s; color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.4;
+  }
+  .chapter-nav-item:hover { background: rgba(255,255,255,0.05); color: white; }
+  .chapter-nav-item.active {
+    background: rgba(201,168,76,0.15); border-right-color: var(--gold); color: var(--gold); font-weight: 600;
+  }
+  .chapter-count {
+    float: left; background: rgba(255,255,255,0.1); border-radius: 10px;
+    padding: 1px 7px; font-size: 11px; color: rgba(255,255,255,0.5);
+  }
+  .chapter-nav-item.active .chapter-count { background: rgba(201,168,76,0.2); color: var(--gold); }
+
+  .main { flex: 1; padding: 28px 32px; overflow-y: auto; }
+
+  .chapter-section { margin-bottom: 40px; }
+  .chapter-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--border);
+  }
+  .chapter-icon {
+    width: 40px; height: 40px; background: var(--navy); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+  }
+  .chapter-title { font-family: 'Frank Ruhl Libre', serif; font-size: 20px; font-weight: 700; color: var(--navy); }
+  .chapter-badge {
+    margin-right: auto; background: var(--navy); color: var(--gold);
+    border-radius: 12px; padding: 3px 12px; font-size: 11px; font-weight: 600;
+  }
+
+  .sub-chapter-group { margin-bottom: 20px; }
+  .sub-chapter-label {
+    font-size: 12px; font-weight: 700; color: var(--text-muted); letter-spacing: 1px;
+    text-transform: uppercase; padding: 0 0 8px 0; border-bottom: 1px dashed var(--border);
+    margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+  }
+  .sub-chapter-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+  .guideline-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 20px; margin-bottom: 10px; border-right: 4px solid var(--navy);
+    transition: all 0.2s; animation: fadeIn 0.3s ease; position: relative;
+  }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+  .guideline-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .guideline-card.has-condition { border-right-color: var(--amber); }
+  .guideline-card.has-exception { border-right-color: var(--purple); }
+  .guideline-card.has-both { border-right-color: var(--green); }
+
+  .edit-mode .guideline-card { cursor: pointer; }
+  .edit-mode .guideline-card:hover {
+    outline: 2px dashed var(--edit-accent);
+    box-shadow: 0 4px 20px rgba(26,122,74,0.15);
+  }
+
+  .edit-icon {
+    position: absolute; top: 10px; left: 10px;
+    width: 26px; height: 26px; background: var(--edit-accent); color: white;
+    border-radius: 6px; display: none; align-items: center; justify-content: center;
+    font-size: 13px; opacity: 0; transition: opacity 0.15s;
+  }
+  .edit-mode .guideline-card:hover .edit-icon { opacity: 1; display: flex; }
+
+  .guideline-main { font-size: 14px; line-height: 1.7; color: var(--text); font-weight: 500; margin-bottom: 10px; }
+  .guideline-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-start; }
+
+  .meta-block {
+    border-radius: 8px; padding: 8px 12px; font-size: 12px; line-height: 1.5; flex: 1; min-width: 200px;
+  }
+  .meta-block .meta-label {
+    font-weight: 700; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 4px; display: flex; align-items: center; gap: 5px;
+  }
+  .meta-condition { background: #fff5f0; border: 1px solid #ffd4bc; }
+  .meta-condition .meta-label { color: var(--amber); }
+  .meta-exception { background: #f5f0ff; border: 1px solid #d4bcff; }
+  .meta-exception .meta-label { color: var(--purple); }
+
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 4px; background: var(--sand);
+    border: 1px solid var(--border); border-radius: 6px; padding: 3px 10px;
+    font-size: 11px; color: var(--text-muted); font-weight: 600; margin-top: 8px;
+  }
+
+  /* ── MODALS ── */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(10,20,40,0.7);
+    z-index: 1000; display: none; align-items: center; justify-content: center;
+    backdrop-filter: blur(3px);
+  }
+  .modal-overlay.open { display: flex; }
+
+  /* Password modal */
+  .pw-box {
+    background: white; border-radius: 16px; width: min(380px, 95vw);
+    padding: 36px 32px; text-align: center;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.35); animation: popIn 0.25s ease;
+  }
+  @keyframes popIn { from{opacity:0;transform:scale(0.94) translateY(16px)} to{opacity:1;transform:none} }
+  .pw-box .lock { font-size: 44px; margin-bottom: 16px; }
+  .pw-box h2 { font-family: 'Frank Ruhl Libre', serif; font-size: 22px; margin-bottom: 6px; }
+  .pw-box p { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+  .pw-input {
+    width: 100%; border: 2px solid var(--border); border-radius: 10px;
+    padding: 13px 16px; font-family: 'Heebo', sans-serif; font-size: 18px;
+    text-align: center; outline: none; letter-spacing: 6px; margin-bottom: 10px; transition: border 0.2s;
+  }
+  .pw-input:focus { border-color: var(--navy); }
+  .pw-input.shake { border-color: #e74c3c; animation: shake 0.35s; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
+  .pw-error { color: #e74c3c; font-size: 12px; min-height: 18px; margin-bottom: 12px; }
+  .pw-submit {
+    width: 100%; background: var(--navy); color: white; border: none; border-radius: 10px;
+    padding: 13px; font-family: 'Heebo', sans-serif; font-size: 15px; font-weight: 700;
+    cursor: pointer; margin-bottom: 10px; transition: opacity 0.2s;
+  }
+  .pw-submit:hover { opacity: 0.88; }
+  .pw-cancel-link { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 13px; font-family: 'Heebo', sans-serif; }
+
+  /* Edit modal */
+  .edit-box {
+    background: white; border-radius: 16px; width: min(680px, 95vw);
+    max-height: 90vh; overflow-y: auto; box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+    animation: popIn 0.25s ease; direction: rtl;
+  }
+  .edit-head {
+    background: var(--navy); color: white; padding: 20px 24px;
+    border-radius: 16px 16px 0 0; display: flex; align-items: center; gap: 12px;
+  }
+  .edit-head h2 { font-size: 16px; font-family: 'Frank Ruhl Libre', serif; }
+  .close-btn {
+    margin-right: auto; background: rgba(255,255,255,0.15); border: none; color: white;
+    width: 30px; height: 30px; border-radius: 8px; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+  }
+  .close-btn:hover { background: rgba(255,255,255,0.25); }
+
+  .edit-body { padding: 24px; }
+  .field-row { display: flex; gap: 12px; }
+  .field-group { margin-bottom: 18px; flex: 1; }
+  .field-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+  .field-input, .field-textarea {
+    width: 100%; background: #f8f6f1; border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px 14px; font-family: 'Heebo', sans-serif; font-size: 14px;
+    color: var(--text); outline: none; transition: border 0.2s; resize: vertical;
+  }
+  .field-textarea { min-height: 80px; line-height: 1.6; }
+  .field-input:focus, .field-textarea:focus { border-color: var(--edit-accent); background: white; }
+
+  .edit-foot {
+    padding: 16px 24px; border-top: 1px solid var(--border);
+    display: flex; gap: 10px; align-items: center;
+  }
+  .btn-save {
+    background: var(--edit-accent); color: white; border: none; border-radius: 8px;
+    padding: 10px 24px; font-family: 'Heebo', sans-serif; font-size: 14px; font-weight: 700;
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .btn-save:hover { opacity: 0.88; }
+  .btn-cancel {
+    background: var(--sand); color: var(--text-muted); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 20px; font-family: 'Heebo', sans-serif;
+    font-size: 14px; cursor: pointer;
+  }
+  .btn-del {
+    margin-right: auto; background: transparent; color: #c0392b; border: 1px solid #c0392b;
+    border-radius: 8px; padding: 10px 16px; font-family: 'Heebo', sans-serif;
+    font-size: 13px; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-del:hover { background: #c0392b; color: white; }
+
+  .empty-state { text-align: center; padding: 60px 20px; color: var(--text-muted); }
+  .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
+  .empty-state h3 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
+
+  .result-info {
+    font-size: 12px; color: var(--text-muted); margin-bottom: 20px;
+    padding: 10px 16px; background: white; border: 1px solid var(--border);
+    border-radius: 8px; display: flex; align-items: center; gap: 8px;
+    transition: all 0.2s;
+  }
+  .result-info.searching {
+    background: #fffbe6;
+    border-color: var(--gold);
+  }
+  .result-info .count { font-weight: 700; color: var(--navy); font-size: 15px; }
+  .result-info .search-keyword { color: var(--amber); font-weight: 700; }
+
+  mark { background: rgba(201,168,76,0.45); color: var(--text); border-radius: 2px; padding: 0 2px; font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { padding: 16px; }
+    .header-stats { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Password Modal -->
+<div class="modal-overlay" id="pw-overlay">
+  <div class="pw-box">
+    <div class="lock">🔐</div>
+    <h2>מצב עריכה</h2>
+    <p>הזיני את סיסמת המנהל כדי לערוך את התוכן</p>
+    <input type="password" class="pw-input" id="pw-input" placeholder="• • • • • •" maxlength="30">
+    <div class="pw-error" id="pw-error"></div>
+    <button class="pw-submit" onclick="checkPassword()">כניסה למצב עריכה</button>
+    <button class="pw-cancel-link" onclick="closePw()">ביטול</button>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal-overlay" id="edit-overlay">
+  <div class="edit-box">
+    <div class="edit-head">
+      <span>✏️</span>
+      <h2>עריכת הנחיה</h2>
+      <button class="close-btn" onclick="closeEdit()">✕</button>
+    </div>
+    <div class="edit-body">
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label">פרק</label>
+          <input type="text" class="field-input" id="e-chapter">
+        </div>
+        <div class="field-group">
+          <label class="field-label">תת-פרק</label>
+          <input type="text" class="field-input" id="e-sub">
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">הנחיה</label>
+        <textarea class="field-textarea" id="e-guideline" rows="3"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">🔶 התניה</label>
+        <textarea class="field-textarea" id="e-condition" rows="2"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">🔷 יוצא דופן / חריג</label>
+        <textarea class="field-textarea" id="e-exception" rows="2"></textarea>
+      </div>
+      <div class="field-group" style="max-width:200px">
+        <label class="field-label">📌 סעיף</label>
+        <input type="text" class="field-input" id="e-section">
+      </div>
+    </div>
+    <div class="edit-foot">
+      <button class="btn-save" onclick="saveEdit()">✓ שמירה</button>
+      <button class="btn-cancel" onclick="closeEdit()">ביטול</button>
+      <button class="btn-del" onclick="deleteItem()">🗑 מחיקה</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Modal -->
+<div class="modal-overlay" id="add-overlay">
+  <div class="edit-box">
+    <div class="edit-head" style="background: var(--edit-accent);">
+      <span>＋</span>
+      <h2>הוספת הנחיה חדשה</h2>
+      <button class="close-btn" onclick="closeAdd()">✕</button>
+    </div>
+    <div class="edit-body">
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label">פרק <span style="color:red">*</span></label>
+          <input type="text" class="field-input" id="a-chapter" list="chapter-list" placeholder="בחרי פרק קיים או הקלידי חדש">
+          <datalist id="chapter-list"><option value="תכליות ושימושים"></option><option value="ייעודי קרקע"></option><option value="היקפי בנייה"></option><option value="עקרונות הבינוי"></option><option value="הוראות, מגבלות והנחיות להכנת תכניות מפורטות"></option><option value="הוראות מיוחדות לאזורי ייעוד:"></option><option value="תשתיות:"></option></datalist>
+        </div>
+        <div class="field-group">
+          <label class="field-label">תת-פרק</label>
+          <input type="text" class="field-input" id="a-sub" list="sub-list" placeholder="אופציונלי">
+          <datalist id="sub-list"><option value="איזור מגורים"></option><option value="איזור מעורב - מרכז רובעי"></option><option value="איזור תעסוקה מיוחד"></option><option value="איזור מע" ר="" ומגורים"=""></option><option value="איזור מע" ר="" ומוסדות"=""></option><option value="מרכז תחבורה ושירותים"></option><option value="איזור למבני ציבור ולמבני ציבור מיוחדים"></option><option value="פארק רובעי"></option><option value="שטח ציבורי פתוח רמת פיתוח א&#39; (אינטנסיבי)"></option><option value="שטח ציבורי פתוח רמת פיתוח ב&#39; (אקסטנסיבי)"></option><option value="ציר ירוק ראשי וציר ירוק עירוני ראשי"></option><option value="אזור שטח ציבורי משולב"></option><option value="אזור לשירותים מטרופוליניים"></option><option value="שטח למתקנים הנדסיים"></option><option value="הגדלת מתקן המים בהוד השרון"></option><option value="אנרגיה שטח לתחנות משנה"></option><option value="מתקני אספקת מים וטיפול במי תהום"></option><option value="דרכים"></option><option value="היקף יחידות דיור"></option><option value="שטחי בניה לשימושים שאינם מגורים"></option><option value="עקרונות הבינוי"></option><option value="תכניות מפורטות"></option><option value="הוראות ומיגבלות והנחיות להכנת תכניות מפורטות:"></option><option value="הגשת תכנית מפורטת"></option><option value="תנאים להפקדת תכניות מפורטות"></option><option value="תנאים למתן תוקף לתכניות מפורטות"></option><option value="מתקנים הנדסיים:"></option></datalist>
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">הנחיה <span style="color:red">*</span></label>
+        <textarea class="field-textarea" id="a-guideline" rows="3" placeholder="טקסט ההנחיה..."></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">🔶 התניה</label>
+        <textarea class="field-textarea" id="a-condition" rows="2" placeholder="תנאי להנחיה (אופציונלי)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">🔷 יוצא דופן / חריג</label>
+        <textarea class="field-textarea" id="a-exception" rows="2" placeholder="חריגים לכלל (אופציונלי)"></textarea>
+      </div>
+      <div class="field-group" style="max-width:200px">
+        <label class="field-label">📌 סעיף</label>
+        <input type="text" class="field-input" id="a-section" placeholder="למשל: 7.6.1">
+      </div>
+    </div>
+    <div class="edit-foot">
+      <button class="btn-save" style="background:var(--edit-accent)" onclick="saveAdd()">＋ הוספה</button>
+      <button class="btn-cancel" onclick="closeAdd()">ביטול</button>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-badge">🏗️</div>
+    <div class="header-text">
+      <h1>מדריך הנחיות תכנון מש/1</h1>
+      <p>ריכוז הוראות והנחיות לתכנית תע"ש השרון</p>
+    </div>
+    <div class="header-stats">
+      <div class="stat-pill">
+        <span class="num" id="total-guidelines">78</span>
+        <span class="lbl">הנחיות</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num" id="total-chapters">7</span>
+        <span class="lbl">פרקים</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num" id="total-conditions">10</span>
+        <span class="lbl">התניות</span>
+      </div>
+      <button class="admin-btn" id="admin-btn" onclick="openPw()">🔒 מצב עריכה</button>
+    </div>
+  </div>
+  <div class="edit-banner" id="edit-banner">
+    <span>✏️ מצב עריכה פעיל</span>
+    <span class="tip">לחצי על כרטיסייה לעריכה, או הוסיפי הנחיה חדשה</span>
+    <button class="export-btn" onclick="openAdd()">＋ הוספת הנחיה</button>
+    <button class="export-btn" onclick="exportHTML()">💾 ייצוא קובץ מעודכן</button>
+    <button class="exit-btn" onclick="exitAdmin()">✕ יציאה מעריכה</button>
+  </div>
+  <div class="search-bar">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="search" placeholder="חפש מילת מפתח — למשל: חשמל, מים, ביוב, דרכים...">
+    </div>
+    <div class="filter-tags" id="filter-tags">
+      <button class="filter-tag active" data-filter="all">הכל</button>
+      <button class="filter-tag" data-filter="has_condition">עם התניה 🔶</button>
+      <button class="filter-tag" data-filter="has_exception">עם חריג 🔷</button>
+      <button class="filter-tag" data-filter="has_section">עם סעיף 📌</button>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar"><div class="sidebar-section-label">פרקים</div><div class="chapter-nav-item " onclick="goToChapter(&#39;תכליות ושימושים&#39;)" data-chapter="תכליות ושימושים">
+      🎯 תכליות ושימושים
+      <span class="chapter-count">4</span>
+    </div><div class="chapter-nav-item " onclick="goToChapter(&#39;ייעודי קרקע&#39;)" data-chapter="ייעודי קרקע">
+      🏘️ ייעודי קרקע
+      <span class="chapter-count">32</span>
+    </div><div class="chapter-nav-item " onclick="goToChapter(&#39;היקפי בנייה&#39;)" data-chapter="היקפי בנייה">
+      📄 היקפי בנייה
+      <span class="chapter-count">7</span>
+    </div><div class="chapter-nav-item " onclick="goToChapter(&#39;עקרונות הבינוי&#39;)" data-chapter="עקרונות הבינוי">
+      📄 עקרונות הבינוי
+      <span class="chapter-count">5</span>
+    </div><div class="chapter-nav-item " onclick="goToChapter(&#39;הוראות, מגבלות והנחיות להכנת תכניות מפורטות&#39;)" data-chapter="הוראות, מגבלות והנחיות להכנת תכניות מפורטות">
+      📄 הוראות, מגבלות והנחיות להכנת תכניות מפורטות
+      <span class="chapter-count">22</span>
+    </div><div class="chapter-nav-item " onclick="goToChapter(&#39;הוראות מיוחדות לאזורי ייעוד:&#39;)" data-chapter="הוראות מיוחדות לאזורי ייעוד:">
+      📍 הוראות מיוחדות לאזורי ייעוד
+      <span class="chapter-count">5</span>
+    </div><div class="chapter-nav-item active" onclick="goToChapter(&#39;תשתיות:&#39;)" data-chapter="תשתיות:">
+      ⚙️ תשתיות
+      <span class="chapter-count">3</span>
+    </div></nav>
+  <main class="main" id="main"><div class="result-info">מציג <span class="count">78</span> הנחיות בסך הכל</div><div class="chapter-section" id="ch-תכליות\ ושימושים">
+      <div class="chapter-header">
+        <div class="chapter-icon">🎯</div>
+        <div class="chapter-title">תכליות ושימושים</div>
+        <span class="chapter-badge">4 הנחיות</span>
+      </div><div class="guideline-card has-condition">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">לא תאושר תכנית מפורטת אשר מסתמכת  על מיקום תשתיות באזור לשירותים מטרופוליניים</div>
+          <div class="guideline-meta">
+            <div class="meta-block meta-condition"><div class="meta-label">🔶 התניה</div><div class="meta-text">יש לאשר תחילה תכנית מפורטת לפרישת תשתיות  באזור שירותים מטרופוליניים</div></div>
+            
+          </div>
+          <span class="section-tag">📌 סעיף 4.ה</span>
+        </div><div class="guideline-card has-exception">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">בכל הייעודים יותר השימוש מתקני תשתית ודרכים  למעט בשטחים פתוחים לסוגיהם</div>
+          <div class="guideline-meta">
+            
+            <div class="meta-block meta-exception"><div class="meta-label">🔷 יוצא דופן / חריג</div><div class="meta-text">הועדה המחוזית תוכל להתיר  מתקני תשתית,  מנימוקים מיוחדים שירשמו בהחלטתה, כשימוש נוסף ובלבד שאין הם פוגעים  באופי האזור ושימוקמו ככל האפשר בתת הקרקע.</div></div>
+          </div>
+          <span class="section-tag">📌 סעיף 4.ז</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">בכל אזורי הייעוד מותרים קווי תשתיות ומתקנים לקיום הייעוד עצמו</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 4.ז</span>
+        </div><div class="guideline-card has-condition">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">בכל שטח התכנית תותר מכוחה של תכנית זו  הקמת מתקנים לצורך הקמת תשתיות בתכנית או מחוצה לה</div>
+          <div class="guideline-meta">
+            <div class="meta-block meta-condition"><div class="meta-label">🔶 התניה</div><div class="meta-text">למעט במקומות שיש בהם כדי לפגוע בערכי טבע ונוף ו/או במרקם העירוני  הקיים, על פי  דעת הצוות המלווה ו/או המשרד להגנס</div></div>
+            
+          </div>
+          <span class="section-tag">📌 סעיף 4.ט</span>
+        </div></div><div class="chapter-section" id="ch-ייעודי\ קרקע">
+      <div class="chapter-header">
+        <div class="chapter-icon">🏘️</div>
+        <div class="chapter-title">ייעודי קרקע</div>
+        <span class="chapter-badge">32 הנחיות</span>
+      </div><div class="sub-chapter-group"><div class="sub-chapter-label">איזור מגורים</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">יותרו קווים ומתקנים נדרשים לאספקת חשמל, מים ולתשתיות ביוב וניקוז.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.1.4.ב</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">איזור מעורב - מרכז רובעי</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">ניתן לייעד שימושים נוספים: קווים ומתקנים למערכות תשתית.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.2.4.ב</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">איזור תעסוקה מיוחד</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">קווים ומתקנים למערכות תשתית</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.3.4.ב</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">איזור מע"ר ומגורים</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">קווים ומתקנים למערכות תשתית.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.4.4.ב</span>
+        </div><div class="guideline-card has-condition">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">מרכז תחבורה</div>
+          <div class="guideline-meta">
+            <div class="meta-block meta-condition"><div class="meta-label">🔶 התניה</div><div class="meta-text">לא תופקד תכנית מפורטת לאזור מע"ר ומגורים שבתחום 4,  אלא אם תכלול שימוש מיוחד למרכז תחבורה,  או אם הופקד כבר מרכז תחבורה בתכנית אחרת.</div></div>
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.4.4.ג</span>
+        </div><div class="guideline-card has-condition">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">מרכז תחבורה</div>
+          <div class="guideline-meta">
+            <div class="meta-block meta-condition"><div class="meta-label">🔶 התניה</div><div class="meta-text">לא תופקד תכנית מפורטת לאזור מע"ר ומגורים שבתחום 4, 
+אלא אם תכלול שימוש מיוחד למרכז תחבורה, 
+או אם הופקד כבר מרכז תחבורה בתכנית אחרת.</div></div>
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.4.4.ג</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">איזור מע"ר ומוסדות</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">קווים ומתקנים למערכות תשתית.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.5.4.ב</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">מרכז תחבורה ושירותים</div><div class="guideline-card has-condition">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">קווים ומתקנים למערכות תשתית.</div>
+          <div class="guideline-meta">
+            <div class="meta-block meta-condition"><div class="meta-label">🔶 התניה</div><div class="meta-text">על תכנית למרכז תחבורה יחולו הוראות  סעיף 6.9 לתמ"מ 5.</div></div>
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.6.4.ב</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">מנחת מסוקים (על מבנה).</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.6.4.א</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">שימושים ראשיים: דרכים ושטחי חנייה, מסילות ברזל, תחנות רכבת, אוטובוסים ומוניות.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.6.4.א</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">איזור למבני ציבור ולמבני ציבור מיוחדים</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">שימושים נוספים לפי סעיף 188 לחוק התו"ב</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.7.4.א</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">קווים ומתקנים למערכות תשתית.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.7.4.ב</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">פארק רובעי</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">יחולו הוראות סעיף 4.6.3 בתמ"מ 5.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 8.4</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">שטח ציבורי פתוח רמת פיתוח א' (אינטנסיבי)</div><div class="guideline-card has-both">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">קווים ומתקנים למערכות תשתית, מתקני מים וביוב, תיעול, ובלבד שיהיו ככל הניתן תת קרקעיים וישתלבו בתכניות הפיתוח של השצ"פ.</div>
+          <div class="guideline-meta">
+            <div class="meta-block meta-condition"><div class="meta-label">🔶 התניה</div><div class="meta-text">תנאי למתקנים אשר חייבים להיות  על קרקעיים יהיה שילובם בנוף הפתוח.</div></div>
+            <div class="meta-block meta-exception"><div class="meta-label">🔷 יוצא דופן / חריג</div><div class="meta-text">באר תחנת שאיבה ובריכה/מאגר מים טעונים  תכנית מפורטת בכפוף לחריגים המפורטים  בסעיפים 9, 11, ו-13 לתמ"א 34/ב/5</div></div>
+          </div>
+          <span class="section-tag">📌 סעיף 1.9.4.ב</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">שטח ציבורי פתוח רמת פיתוח ב' (אקסטנסיבי)</div><div class="guideline-card has-condition">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">קווים ומתקנים למערכות תשתית, מתקני מים, ביוב, תיעול,  ניקוז מתקנים ובארות לאספקת מים וכיו"ב.</div>
+          <div class="guideline-meta">
+            <div class="meta-block meta-condition"><div class="meta-label">🔶 התניה</div><div class="meta-text">תכסית למתקני תשתית תהיה 0.5%  משטח השצ"פ</div></div>
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.10.4.ב</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">ציר ירוק ראשי וציר ירוק עירוני ראשי</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">כל כביש/רחוב בתכנית מפורטת יוכן על בסיס חתך רעיוני  כמופיע בנספח ד2 נספח נוף.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 3.11.4</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">אסורה כל בניה אלא למטרות הציר הירוק הראשי</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 7.11.4.א</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">אזור שטח ציבורי משולב</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">על פי השימושים לא ניתן להקים תשתיות (ספ)</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.12.4</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">אזור לשירותים מטרופוליניים</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">ניתן לייעד קרקע ל: חניון אוטובוס או רכב כבד, חניה לרכבים פרטיים ושירות חנה וסע,  תחנת מעבר פסולת (בהתאם להוראות תמ"א 16),  אזור להסעות מוסדרות, חניה לרכבים עירוניים, שימושים עירוניים לפי תמ"מ 5</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.13.4.א</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">שימושים נוספים: מתקני תשתית</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.13.4.ב</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">שטח למתקנים הנדסיים</div><div class="guideline-card has-exception">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">ניתן לייעד למתקנים הנדסיים: קווי ומתקני אספקת חשמל, קווי ומתקני  אספקת מים ומתקן לטיפול ולסילוק מזהמים ממי תהום,  קווי ומתקני ביוב, קווי ומתקני תקשורת,קווי ומתקני ניקוז, ומתקני ניקוז לשימור נגר עילי.</div>
+          <div class="guideline-meta">
+            
+            <div class="meta-block meta-exception"><div class="meta-label">🔷 יוצא דופן / חריג</div><div class="meta-text">בסמכות הועדה המקומית או המחוזית להוסיף מתקנים הנדסיים נוספים לאלה המפורטים לעיל מבלי שהדבר ייחשב שינוי לתכנית זו</div></div>
+          </div>
+          <span class="section-tag">📌 סעיף 1.15.4</span>
+        </div><div class="guideline-card has-condition">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">בתכניות המפורטות יקבע סימון מחייב ותנאים נוספים לעניין מיקום וגודל השטח של מתקנים כולל קידוחים לטיפול במים וקידוחים לצרכים אחרים</div>
+          <div class="guideline-meta">
+            <div class="meta-block meta-condition"><div class="meta-label">🔶 התניה</div><div class="meta-text">לאחר חו"ד של רשות המים שתינתן מתוך חודש מקבלת מסמכי התכנית והכל על פי הוראות תמ"א 34/ב/5</div></div>
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.15.4.ב</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">הגדלת מתקן המים בהוד השרון</div><div class="guideline-card has-condition">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">ניתן יהיה להוציא היתרי בניה להגדלת מתקן המים בהוד השרון מכח תכנית זו או מכח תכנית מפורטת   ובלבד שההיתר או התכנית יהיו לכל מתקן המים.</div>
+          <div class="guideline-meta">
+            <div class="meta-block meta-condition"><div class="meta-label">🔶 התניה</div><div class="meta-text">ובלבד שההיתר או התכנית יהיו לכל מתקן המים.</div></div>
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.15.4.א</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">אנרגיה שטח לתחנות משנה</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">תחנת משנה "הוד השרון" קיימת באתר ליד דרך 4 באזור בית עלמין והוד השרון</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 3.15.4.א</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">ניתן לייעד בתכננית מפורטת שטח לתחנת משנה נוספת לשרות אזורי התעסוקה ושרות האזור בכל ייעוד שאינו כולל מגורים.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 3.15.4.ב</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">מתקנים ראשיים בתחמ"ש יהיו במבנה עילי סגור.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 3.15.4.ד</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">שטח מיועד לתחמ"ש 8 דונם</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 3.15.4.ה</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">מתקני אספקת מים וטיפול במי תהום</div><div class="guideline-card has-exception">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">שטח למתקנים הנדסיים ניתן לייעד למתקנים לאספקת מים ולטיפול במים</div>
+          <div class="guideline-meta">
+            
+            <div class="meta-block meta-exception"><div class="meta-label">🔷 יוצא דופן / חריג</div><div class="meta-text">אם אין אפשרות אחרת, ניתן להתיר בתכנית מפורטת הקמת מתקן טיפול בזיהום מים, גם ביעוד אחר, במגבלות המתאימות בלבד שזו לא : רצועת תכנון/ זכות דרך למתע"ן/מסילה או כביש</div></div>
+          </div>
+          <span class="section-tag">📌 סעיף 5.15.4.א</span>
+        </div><div class="guideline-card has-condition">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">בתכנית מפורטת ניתן לקבוע סימון מחייב ותנאים לנושא מיקום וגודל שטח המתקן</div>
+          <div class="guideline-meta">
+            <div class="meta-block meta-condition"><div class="meta-label">🔶 התניה</div><div class="meta-text">נדרשת חוו"ד רשות המים</div></div>
+            
+          </div>
+          <span class="section-tag">📌 סעיף 5.15.4.ב</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">דרכים</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">תכניות דרכים מפורטות יאושרו במסגרת תכניות נפרדות.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.16.4</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">יש בתכנית הסבר מפורט לגבי דרכים ספציפיות</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 5.16.4-3.16.4</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">ברצועה לדרך/טייפול נופי ניתן להעביר תחבורה מסילתית במסגרת הליך סטטוטורי.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 11.16.4</span>
+        </div></div></div><div class="chapter-section" id="ch-היקפי\ בנייה">
+      <div class="chapter-header">
+        <div class="chapter-icon">📄</div>
+        <div class="chapter-title">היקפי בנייה</div>
+        <span class="chapter-badge">7 הנחיות</span>
+      </div><div class="sub-chapter-group"><div class="sub-chapter-label">היקף יחידות דיור</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">התכנית קבעה 20,700 יח"ד בייעוד מגורים</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.5.א</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">בתכנית מפורטת ניתן  יהיה להוסיף יחידות דיור מעבר למספר זה בתנאים:</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.5.ג</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">הגשת נספח פרוגרמתי המתייחס לשטחי ציבור ותשתית,  ונספח כלכלי המעיד על חוסן הרשות המקומית</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.5.ג.1.</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">שטחי בניה לשימושים שאינם מגורים</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">שטחי הבניה 1,035,000  מ"ר שטח עיקרי מירבי בתנאים:</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.5</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">המרה משטחי תעסוקה לשטחי מגורים על כל יחידת דיור  יופחתו 150 מ"ר משימושים שאינם למגורים</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.5</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">בכל מקרה סה"כ שטחים לא למגורים לא ייפחתו מ735,000 מ"ר</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.5</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">מוסד תכנון מוסמך יקבע את היקף הזכויות בתכניות מפורטות</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.5</span>
+        </div></div></div><div class="chapter-section" id="ch-עקרונות\ הבינוי">
+      <div class="chapter-header">
+        <div class="chapter-icon">📄</div>
+        <div class="chapter-title">עקרונות הבינוי</div>
+        <span class="chapter-badge">5 הנחיות</span>
+      </div><div class="sub-chapter-group"><div class="sub-chapter-label">עקרונות הבינוי</div><div class="guideline-card has-exception">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">השלמת תכנית צל לפרישת כל הייעודים התע"ש</div>
+          <div class="guideline-meta">
+            
+            <div class="meta-block meta-exception"><div class="meta-label">🔷 יוצא דופן / חריג</div><div class="meta-text">בוצע</div></div>
+          </div>
+          <span class="section-tag">📌 סעיף 1.6</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">תכניות מפורטות</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">יתוכננו בהתאם ל:</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.6</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">שלד המערכות הפתוחות6.2</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.6.א</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">גובה הבניינים בהתאם להוראות תמ"מ 5</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.6.ב</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">מרכז תחבורה ישולב באזור מע"ר ומגורים במתחם תכנון 4</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.6.ג</span>
+        </div></div></div><div class="chapter-section" id="ch-הוראות\,\ מגבלות\ והנחיות\ להכנת\ תכניות\ מפורטות">
+      <div class="chapter-header">
+        <div class="chapter-icon">📄</div>
+        <div class="chapter-title">הוראות, מגבלות והנחיות להכנת תכניות מפורטות</div>
+        <span class="chapter-badge">22 הנחיות</span>
+      </div><div class="sub-chapter-group"><div class="sub-chapter-label">הוראות ומיגבלות והנחיות להכנת תכניות מפורטות:</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">היתר בניה ינתן לאחר אישור תכנית מפורטת</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.7.א</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">שינוי גבולות מתחמים באישור הועדה המחוזית  (הועדה המחוזית תוודא תכנון על כל שטח המתחם)</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.7.ב</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">הוראות תכנית מפורטת, למעט בשטח רמות השבים,  טעונות אישור מנהל רשות המים.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.7.ה</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">התכנית מגדירה 8 מתחמים</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.7.א</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">כל תכנית מפורטת תכלול לפחות אחד ממתחמי התכנון</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.7.א</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">מתחם 1 - ניתן לקדם תכנית לחלק מהמתחם בכפוף להחלטת הועדה המחוזית מנימוקים שירשמו, וכן לתהכיות למתקני תשתית או לדרך שיכול שתחול עליהם בלבד.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.7.א</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">גבול תכנית מפורטת יכול לכלול שטחים מעבר למתחמים כפי שמופיעים בתשריט בהתאם לצורך בתשתיות על לקיום מתחם התכנון, לרבות ובהתאם לצרכי טיהור הקרקע.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.7.ג</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">מתחמים 1 עד 4 ו-8 הינם אזור מוטה תחבורה ציבורית.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.7.ז</span>
+        </div></div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">תכנית מפורטת העתידה לייצר פסולת בהיקפים ניכרים או שבתחומה הריסה בהיקפים גדולים יקבעו בה תנאים לטיפול בכל סוגי הפסולת, לרבות הרמת תחנת מעבר זמנית לפסולת כשימוש זמני בתחום התכנית.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 3.7.כ</span>
+        </div><div class="sub-chapter-group"><div class="sub-chapter-label">הגשת תכנית מפורטת</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">תכנית מפורטת תכלול שלביות בהתאם לסעיף 84 לחוק  בהיבטים שונים כולל הקמת תשתיות.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 3.7.כג</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">תכנית מפורטת תבטיח את ביצוע חלקה היחסי בטיהור הקרקע והמים, בפיתוח שצ"פים ובנייני ציבור ובפיתוח תשתיות ודרכים (בהתאם להחלטת מוסד תכנון).</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 3.7.כד</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">בכל הנוגע לתשתיות הנדסיות יחולו הוראות סעיף 7.1 לתמ"מ/5.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 3.7.כח</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">תנאים להפקדת תכניות מפורטות</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">תנאי להפקדת תכנית מפורטת סיום ביצוע סקר היסטורי והכנת תכנית לניטור וטיהור.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.6.7</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">סקר קרקע נדרש גם אם בוצע טיהור של הקרקע.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.6.7</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">כל תכנית מפורטת תקבע תנאים למתן היתרי בניה שיכללו התניות תכנון וביצוע של חיבור תחבורתי  אחד או יותר על פי סעיף 7.6.3 בתכנית זו.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 4.6.7</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">לכל תכנית מפורטת תיערך בדיקה תחבורתית.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 5.6.7</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">תנאי להפקדת תכנית יהיה אישור נספח מים ונספח ביוב על ידי הועדה  המקצועית למים וביוב.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 13.6.7</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">תנאי להפקדת תכנית מפורטת נוספת מעבר לתכנית הראשונה, הוא אישור הועדה המקצועית למים וביוב כי תכנית אב מעודכנת לביוב של הרצליה ורמה"ש עונה על דרישות סעיף 13 לתמ"א 34.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 14.6.7</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">תנאים למתן תוקף לתכניות מפורטות</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">תנאי לאישור תכנית מפורטת הינו ביצוע טיהור המתחם בשלמותו.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.7.7</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">ככל שקיים מחוץ לשטח התכנית מוקד זיהום, שלפי הנתונים הנו מסכן את שטח התכנית המפורטת, יש לפעול לטיהורו כתנאי לאישור התכנית.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.7.7</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">תנאי לאישור תכנית מפורטת, למעט תכנית צור, יהיה קביעת הוראה ולפיה תנאי למתן היתרי בניה מכוחן , יהיה אישור תכנית האב לביוב של הרצליה ורמה"ש ואישור תכניות הנדסיות של מים וביוב על ידי הועדה המקצועית לביוב שליד הועדה המחוזית.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 5.7.7</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">תכנית הכוללת חציית עורק ניקוז משני על ידי קווי תשתית, דרכים ומסילות ברזל,  תאושר רק לאחר קבלת חוות דעת של רשות הניקוז שהתכנית חלה בתחומה.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 8.7.7</span>
+        </div></div></div><div class="chapter-section" id="ch-הוראות\ מיוחדות\ לאזורי\ ייעוד\:">
+      <div class="chapter-header">
+        <div class="chapter-icon">📍</div>
+        <div class="chapter-title">הוראות מיוחדות לאזורי ייעוד</div>
+        <span class="chapter-badge">5 הנחיות</span>
+      </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">בשטח ציבורי פתוח  המלווה עורקי מים כמשמעותם בחוק הניקוז,  תותר הצפתו במי נגר בהתאם להוראות בנספחי התשתית.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 4.8</span>
+        </div><div class="sub-chapter-group"><div class="sub-chapter-label">מתקנים הנדסיים:</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">על שטחים המיועדים בתכנית זו (ובתכנית מפורטת שתוכן) למתקני תשתית מים, ביוב וניקוז יחולו הוראות חוק התו"ב.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 7.8</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">על מתקני ומפעלי ביוב, מתקני איסוף, שאיבה או קווי הולכה יחולו  הוראות חוק הרשויות המקומיות (ביוב) התשכ"ב - 1962 על תיקוניו.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 7.8</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">לצורך התקנת והנחת צנרת ומתקני תשתית תהיה הרשות המקומית, או כל רשות מוסמכת, רשאית לבצע חפירה, התקנה והנחת צינורות בכל קרקע, וכן תהיה לה זכות גישה לכל קרקע כאמור לשם ביצוע עבודות אחזקה ותיקונים.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 7.8</span>
+        </div></div><div class="sub-chapter-group"><div class="sub-chapter-label">שפכים</div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">בתכניות המפורטות יובטח חיבור, איזוף וריכוז שפכים מכל המקורות במערכת הביוב והולכה למטשים בהרצליה או רמת השרון לפי הנחיות ועדה מקצועית לביוב שליד הועדה המחוזית</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 12.8</span>
+        </div></div></div><div class="chapter-section" id="ch-תשתיות\:">
+      <div class="chapter-header">
+        <div class="chapter-icon">⚙️</div>
+        <div class="chapter-title">תשתיות</div>
+        <span class="chapter-badge">3 הנחיות</span>
+      </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">כל התשתיות תהיינה תת קרקעיות: חשמל מתח עליון גבוה ונמוך, בזק, תאורה, תשתית,  לרבות הזנות החשמל למבנים.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.11</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">קווי התשתית יבוצעו על פי נספחי ותכניות התשתית לאחר היוועצות ברשות המוסמכת.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 1.11</span>
+        </div><div class="guideline-card ">
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">קו מתח עליון לאורך דרך 4 וקווי חשמל לרכבת הקלה או  למסילת ברזל - אינם נדרשים להיות תת קרקעיים.</div>
+          <div class="guideline-meta">
+            
+            
+          </div>
+          <span class="section-tag">📌 סעיף 2.11</span>
+        </div></div></main>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+//  שני את הסיסמה כאן:
+const ADMIN_PASSWORD = 'תכנון2025';
+// ══════════════════════════════════════════════
+
+let DATA = [{"chapter":"תכליות ושימושים","sub_chapter":"","guideline":"לא תאושר תכנית מפורטת אשר מסתמכת  על מיקום תשתיות באזור לשירותים מטרופוליניים","condition":"יש לאשר תחילה תכנית מפורטת לפרישת תשתיות  באזור שירותים מטרופוליניים","exception":"","section":"4.ה"},{"chapter":"תכליות ושימושים","sub_chapter":"","guideline":"בכל הייעודים יותר השימוש מתקני תשתית ודרכים  למעט בשטחים פתוחים לסוגיהם","condition":"","exception":"הועדה המחוזית תוכל להתיר  מתקני תשתית,  מנימוקים מיוחדים שירשמו בהחלטתה, כשימוש נוסף ובלבד שאין הם פוגעים  באופי האזור ושימוקמו ככל האפשר בתת הקרקע.","section":"4.ז"},{"chapter":"תכליות ושימושים","sub_chapter":"","guideline":"בכל אזורי הייעוד מותרים קווי תשתיות ומתקנים לקיום הייעוד עצמו","condition":"","exception":"","section":"4.ז"},{"chapter":"תכליות ושימושים","sub_chapter":"","guideline":"בכל שטח התכנית תותר מכוחה של תכנית זו  הקמת מתקנים לצורך הקמת תשתיות בתכנית או מחוצה לה","condition":"למעט במקומות שיש בהם כדי לפגוע בערכי טבע ונוף ו/או במרקם העירוני  הקיים, על פי  דעת הצוות המלווה ו/או המשרד להגנס","exception":"","section":"4.ט"},{"chapter":"ייעודי קרקע","sub_chapter":"איזור מגורים","guideline":"יותרו קווים ומתקנים נדרשים לאספקת חשמל, מים ולתשתיות ביוב וניקוז.","condition":"","exception":"","section":"1.1.4.ב"},{"chapter":"ייעודי קרקע","sub_chapter":"איזור מעורב - מרכז רובעי","guideline":"ניתן לייעד שימושים נוספים: קווים ומתקנים למערכות תשתית.","condition":"","exception":"","section":"1.2.4.ב"},{"chapter":"ייעודי קרקע","sub_chapter":"איזור תעסוקה מיוחד","guideline":"קווים ומתקנים למערכות תשתית","condition":"","exception":"","section":"1.3.4.ב"},{"chapter":"ייעודי קרקע","sub_chapter":"איזור מע\"ר ומגורים","guideline":"קווים ומתקנים למערכות תשתית.","condition":"","exception":"","section":"1.4.4.ב"},{"chapter":"ייעודי קרקע","sub_chapter":"איזור מע\"ר ומגורים","guideline":"מרכז תחבורה","condition":"לא תופקד תכנית מפורטת לאזור מע\"ר ומגורים שבתחום 4,  אלא אם תכלול שימוש מיוחד למרכז תחבורה,  או אם הופקד כבר מרכז תחבורה בתכנית אחרת.","exception":"","section":"1.4.4.ג"},{"chapter":"ייעודי קרקע","sub_chapter":"איזור מע\"ר ומוסדות","guideline":"קווים ומתקנים למערכות תשתית.","condition":"","exception":"","section":"1.5.4.ב"},{"chapter":"ייעודי קרקע","sub_chapter":"מרכז תחבורה ושירותים","guideline":"קווים ומתקנים למערכות תשתית.","condition":"על תכנית למרכז תחבורה יחולו הוראות  סעיף 6.9 לתמ\"מ 5.","exception":"","section":"1.6.4.ב"},{"chapter":"ייעודי קרקע","sub_chapter":"מרכז תחבורה ושירותים","guideline":"מנחת מסוקים (על מבנה).","condition":"","exception":"","section":"1.6.4.א"},{"chapter":"ייעודי קרקע","sub_chapter":"איזור למבני ציבור ולמבני ציבור מיוחדים","guideline":"שימושים נוספים לפי סעיף 188 לחוק התו\"ב","condition":"","exception":"","section":"1.7.4.א"},{"chapter":"ייעודי קרקע","sub_chapter":"איזור למבני ציבור ולמבני ציבור מיוחדים","guideline":"קווים ומתקנים למערכות תשתית.","condition":"","exception":"","section":"1.7.4.ב"},{"chapter":"ייעודי קרקע","sub_chapter":"פארק רובעי","guideline":"יחולו הוראות סעיף 4.6.3 בתמ\"מ 5.","condition":"","exception":"","section":"8.4"},{"chapter":"ייעודי קרקע","sub_chapter":"שטח ציבורי פתוח רמת פיתוח א' (אינטנסיבי)","guideline":"קווים ומתקנים למערכות תשתית, מתקני מים וביוב, תיעול, ובלבד שיהיו ככל הניתן תת קרקעיים וישתלבו בתכניות הפיתוח של השצ\"פ.","condition":"תנאי למתקנים אשר חייבים להיות  על קרקעיים יהיה שילובם בנוף הפתוח.","exception":"באר תחנת שאיבה ובריכה/מאגר מים טעונים  תכנית מפורטת בכפוף לחריגים המפורטים  בסעיפים 9, 11, ו-13 לתמ\"א 34/ב/5","section":"1.9.4.ב"},{"chapter":"ייעודי קרקע","sub_chapter":"שטח ציבורי פתוח רמת פיתוח ב' (אקסטנסיבי)","guideline":"קווים ומתקנים למערכות תשתית, מתקני מים, ביוב, תיעול,  ניקוז מתקנים ובארות לאספקת מים וכיו\"ב.","condition":"תכסית למתקני תשתית תהיה 0.5%  משטח השצ\"פ","exception":"","section":"1.10.4.ב"},{"chapter":"ייעודי קרקע","sub_chapter":"ציר ירוק ראשי וציר ירוק עירוני ראשי","guideline":"כל כביש/רחוב בתכנית מפורטת יוכן על בסיס חתך רעיוני  כמופיע בנספח ד2 נספח נוף.","condition":"","exception":"","section":"3.11.4"},{"chapter":"ייעודי קרקע","sub_chapter":"ציר ירוק ראשי וציר ירוק עירוני ראשי","guideline":"אסורה כל בניה אלא למטרות הציר הירוק הראשי","condition":"","exception":"","section":"7.11.4.א"},{"chapter":"ייעודי קרקע","sub_chapter":"אזור שטח ציבורי משולב","guideline":"על פי השימושים לא ניתן להקים תשתיות (ספ)","condition":"","exception":"","section":"1.12.4"},{"chapter":"ייעודי קרקע","sub_chapter":"אזור לשירותים מטרופוליניים","guideline":"ניתן לייעד קרקע ל: חניון אוטובוס או רכב כבד, חניה לרכבים פרטיים ושירות חנה וסע,  תחנת מעבר פסולת (בהתאם להוראות תמ\"א 16),  אזור להסעות מוסדרות, חניה לרכבים עירוניים, שימושים עירוניים לפי תמ\"מ 5","condition":"","exception":"","section":"1.13.4.א"},{"chapter":"ייעודי קרקע","sub_chapter":"אזור לשירותים מטרופוליניים","guideline":"שימושים נוספים: מתקני תשתית","condition":"","exception":"","section":"1.13.4.ב"},{"chapter":"ייעודי קרקע","sub_chapter":"שטח למתקנים הנדסיים","guideline":"ניתן לייעד למתקנים הנדסיים: קווי ומתקני אספקת חשמל, קווי ומתקני  אספקת מים ומתקן לטיפול ולסילוק מזהמים ממי תהום,  קווי ומתקני ביוב, קווי ומתקני תקשורת,קווי ומתקני ניקוז, ומתקני ניקוז לשימור נגר עילי.","condition":"","exception":"בסמכות הועדה המקומית או המחוזית להוסיף מתקנים הנדסיים נוספים לאלה המפורטים לעיל מבלי שהדבר ייחשב שינוי לתכנית זו","section":"1.15.4"},{"chapter":"ייעודי קרקע","sub_chapter":"הגדלת מתקן המים בהוד השרון","guideline":"ניתן יהיה להוציא היתרי בניה להגדלת מתקן המים בהוד השרון מכח תכנית זו או מכח תכנית מפורטת   ובלבד שההיתר או התכנית יהיו לכל מתקן המים.","condition":"ובלבד שההיתר או התכנית יהיו לכל מתקן המים.","exception":"","section":"2.15.4.א"},{"chapter":"ייעודי קרקע","sub_chapter":"אנרגיה שטח לתחנות משנה","guideline":"תחנת משנה \"הוד השרון\" קיימת באתר ליד דרך 4 באזור בית עלמין והוד השרון","condition":"","exception":"","section":"3.15.4.א"},{"chapter":"ייעודי קרקע","sub_chapter":"אנרגיה שטח לתחנות משנה","guideline":"ניתן לייעד בתכננית מפורטת שטח לתחנת משנה נוספת לשרות אזורי התעסוקה ושרות האזור בכל ייעוד שאינו כולל מגורים.","condition":"","exception":"","section":"3.15.4.ב"},{"chapter":"ייעודי קרקע","sub_chapter":"אנרגיה שטח לתחנות משנה","guideline":"מתקנים ראשיים בתחמ\"ש יהיו במבנה עילי סגור.","condition":"","exception":"","section":"3.15.4.ד"},{"chapter":"ייעודי קרקע","sub_chapter":"אנרגיה שטח לתחנות משנה","guideline":"שטח מיועד לתחמ\"ש 8 דונם","condition":"","exception":"","section":"3.15.4.ה"},{"chapter":"ייעודי קרקע","sub_chapter":"מתקני אספקת מים וטיפול במי תהום","guideline":"שטח למתקנים הנדסיים ניתן לייעד למתקנים לאספקת מים ולטיפול במים","condition":"","exception":"אם אין אפשרות אחרת, ניתן להתיר בתכנית מפורטת הקמת מתקן טיפול בזיהום מים, גם ביעוד אחר, במגבלות המתאימות בלבד שזו לא : רצועת תכנון/ זכות דרך למתע\"ן/מסילה או כביש","section":"5.15.4.א"},{"chapter":"ייעודי קרקע","sub_chapter":"מתקני אספקת מים וטיפול במי תהום","guideline":"בתכנית מפורטת ניתן לקבוע סימון מחייב ותנאים לנושא מיקום וגודל שטח המתקן","condition":"נדרשת חוו\"ד רשות המים","exception":"","section":"5.15.4.ב"},{"chapter":"ייעודי קרקע","sub_chapter":"דרכים","guideline":"תכניות דרכים מפורטות יאושרו במסגרת תכניות נפרדות.","condition":"","exception":"","section":"1.16.4"},{"chapter":"ייעודי קרקע","sub_chapter":"דרכים","guideline":"יש בתכנית הסבר מפורט לגבי דרכים ספציפיות","condition":"","exception":"","section":"5.16.4-3.16.4"},{"chapter":"ייעודי קרקע","sub_chapter":"דרכים","guideline":"ברצועה לדרך/טייפול נופי ניתן להעביר תחבורה מסילתית במסגרת הליך סטטוטורי.","condition":"","exception":"","section":"11.16.4"},{"chapter":"ייעודי קרקע","sub_chapter":"היקף יחידות דיור","guideline":"התכנית קבעה 20,700 יח\"ד בייעוד מגורים","condition":"","exception":"","section":"1.5.א"},{"chapter":"ייעודי קרקע","sub_chapter":"היקף יחידות דיור","guideline":"בתכנית מפורטת ניתן  יהיה להוסיף יחידות דיור מעבר למספר זה בתנאים:","condition":"","exception":"","section":"1.5.ג"},{"chapter":"ייעודי קרקע","sub_chapter":"היקף יחידות דיור","guideline":"הגשת נספח פרוגרמתי המתייחס לשטחי ציבור ותשתית,  ונספח כלכלי המעיד על חוסן הרשות המקומית","condition":"","exception":"","section":"1.5.ג.1."},{"chapter":"ייעודי קרקע","sub_chapter":"שטחי בניה לשימושים שאינם מגורים","guideline":"שטחי הבניה 1,035,000  מ\"ר שטח עיקרי מירבי בתנאים:","condition":"","exception":"","section":"2.5"},{"chapter":"ייעודי קרקע","sub_chapter":"שטחי בניה לשימושים שאינם מגורים","guideline":"המרה משטחי תעסוקה לשטחי מגורים על כל יחידת דיור  יופחתו 150 מ\"ר משימושים שאינם למגורים","condition":"","exception":"","section":"2.5"},{"chapter":"ייעודי קרקע","sub_chapter":"שטחי בניה לשימושים שאינם מגורים","guideline":"בכל מקרה סה\"כ שטחים לא למגורים לא ייפחתו מ735,000 מ\"ר","condition":"","exception":"","section":"2.5"},{"chapter":"ייעודי קרקע","sub_chapter":"שטחי בניה לשימושים שאינם מגורים","guideline":"מוסד תכנון מוסמך יקבע את היקף הזכויות בתכניות מפורטות","condition":"","exception":"","section":"2.5"},{"chapter":"עקרונות  הבינוי והנחיות להכנת מפורטות:","sub_chapter":"עקרונות הבינוי","guideline":"השלמת תכנית צל לפרישת כל הייעודים התע\"ש","condition":"","exception":"בוצע","section":"1.6"},{"chapter":"עקרונות  הבינוי והנחיות להכנת מפורטות:","sub_chapter":"תכניות מפורטות","guideline":"יתוכננו בהתאם ל:","condition":"","exception":"","section":"2.6"},{"chapter":"עקרונות  הבינוי והנחיות להכנת מפורטות:","sub_chapter":"תכניות מפורטות","guideline":"שלד המערכות הפתוחות6.2","condition":"","exception":"","section":"2.6.א"},{"chapter":"עקרונות  הבינוי והנחיות להכנת מפורטות:","sub_chapter":"תכניות מפורטות","guideline":"גובה הבניינים בהתאם להוראות תמ\"מ 5","condition":"","exception":"","section":"2.6.ב"},{"chapter":"עקרונות  הבינוי והנחיות להכנת מפורטות:","sub_chapter":"תכניות מפורטות","guideline":"מרכז תחבורה ישולב באזור מע\"ר ומגורים במתחם תכנון 4","condition":"","exception":"","section":"2.6.ג"},{"chapter":"עקרונות  הבינוי והנחיות להכנת מפורטות:","sub_chapter":"הוראות ומיגבלות והנחיות להכנת תכניות מפורטות:","guideline":"היתר בניה ינתן לאחר אישור תכנית מפורטת","condition":"","exception":"","section":"1.7.א"},{"chapter":"עקרונות  הבינוי והנחיות להכנת מפורטות:","sub_chapter":"הוראות ומיגבלות והנחיות להכנת תכניות מפורטות:","guideline":"שינוי גבולות מתחמים באישור הועדה המחוזית  (הועדה המחוזית תוודא תכנון על כל שטח המתחם)","condition":"","exception":"","section":"1.7.ב"},{"chapter":"עקרונות  הבינוי והנחיות להכנת מפורטות:","sub_chapter":"הוראות ומיגבלות והנחיות להכנת תכניות מפורטות:","guideline":"הוראות תכנית מפורטת, למעט בשטח רמות השבים,  טעונות אישור מנהל רשות המים.","condition":"","exception":"","section":"1.7.ה"},{"chapter":"עקרונות  הבינוי והנחיות להכנת מפורטות:","sub_chapter":"הוראות ומיגבלות והנחיות להכנת תכניות מפורטות:","guideline":"התכנית מגדירה 8 מתחמים","condition":"","exception":"","section":"2.7.א"},{"chapter":"עקרונות  הבינוי והנחיות להכנת מפורטות:","sub_chapter":"הוראות ומיגבלות והנחיות להכנת תכניות מפורטות:","guideline":"כל תכנית מפורטת תכלול לפחות אחד ממתחמי התכנון","condition":"","exception":"","section":"2.7.א"},{"chapter":"עקרונות  הבינוי והנחיות להכנת מפורטות:","sub_chapter":"הוראות ומיגבלות והנחיות להכנת תכניות מפורטות:","guideline":"מתחם 1 - ניתן לקדם תכנית לחלק מהמתחם בכפוף להחלטת הועדה המחוזית מנימוקים שירשמו, וכן לתהכיות למתקני תשתית או לדרך שיכול שתחול עליהם בלבד.","condition":"","exception":"","section":"2.7.א"},{"chapter":"עקרונות  הבינוי והנחיות להכנת מפורטות:","sub_chapter":"הוראות ומיגבלות והנחיות להכנת תכניות מפורטות:","guideline":"גבול תכנית מפורטת יכול לכלול שטחים מעבר למתחמים כפי שמופיעים בתשריט בהתאם לצורך בתשתיות על לקיום מתחם התכנון, לרבות ובהתאם לצרכי טיהור הקרקע.","condition":"","exception":"","section":"2.7.ג"},{"chapter":"עקרונות  הבינוי והנחיות להכנת מפורטות:","sub_chapter":"הוראות ומיגבלות והנחיות להכנת תכניות מפורטות:","guideline":"מתחמים 1 עד 4 ו-8 הינם אזור מוטה תחבורה ציבורית.","condition":"","exception":"","section":"2.7.ז"},{"chapter":"הגשת תכנית מפורטת","sub_chapter":"","guideline":"תכנית מפורטת העתידה לייצר פסולת בהיקפים ניכרים או שבתחומה הריסה בהיקפים גדולים יקבעו בה תנאים לטיפול בכל סוגי הפסולת, לרבות הרמת תחנת מעבר זמנית לפסולת כשימוש זמני בתחום התכנית.","condition":"","exception":"","section":"3.7.כ"},{"chapter":"הגשת תכנית מפורטת","sub_chapter":"","guideline":"תכנית מפורטת תכלול שלביות בהתאם לסעיף 84 לחוק  בהיבטים שונים כולל הקמת תשתיות.","condition":"","exception":"","section":"3.7.כג"},{"chapter":"הגשת תכנית מפורטת","sub_chapter":"","guideline":"תכנית מפורטת תבטיח את ביצוע חלקה היחסי בטיהור הקרקע והמים, בפיתוח שצ\"פים ובנייני ציבור ובפיתוח תשתיות ודרכים (בהתאם להחלטת מוסד תכנון).","condition":"","exception":"","section":"3.7.כד"},{"chapter":"הגשת תכנית מפורטת","sub_chapter":"","guideline":"בכל הנוגע לתשתיות הנדסיות יחולו הוראות סעיף 7.1 לתמ\"מ/5.","condition":"","exception":"","section":"3.7.כח"},{"chapter":"תנאים להפקדת תכניות מפורטות:","sub_chapter":"","guideline":"תנאי להפקדת תכנית מפורטת סיום ביצוע סקר היסטורי והכנת תכנית לניטור וטיהור.","condition":"","exception":"","section":"1.6.7"},{"chapter":"תנאים להפקדת תכניות מפורטות:","sub_chapter":"","guideline":"סקר קרקע נדרש גם אם בוצע טיהור של הקרקע.","condition":"","exception":"","section":"1.6.7"},{"chapter":"תנאים להפקדת תכניות מפורטות:","sub_chapter":"","guideline":"כל תכנית מפורטת תקבע תנאים למתן היתרי בניה שיכללו התניות תכנון וביצוע של חיבור תחבורתי  אחד או יותר על פי סעיף 7.6.3 בתכנית זו.","condition":"","exception":"","section":"4.6.7"},{"chapter":"תנאים להפקדת תכניות מפורטות:","sub_chapter":"","guideline":"לכל תכנית מפורטת תיערך בדיקה תחבורתית.","condition":"","exception":"","section":"5.6.7"},{"chapter":"תנאים להפקדת תכניות מפורטות:","sub_chapter":"","guideline":"תנאי להפקדת תכנית יהיה אישור נספח מים ונספח ביוב על ידי הועדה  המקצועית למים וביוב.","condition":"","exception":"","section":"13.6.7"},{"chapter":"תנאים להפקדת תכניות מפורטות:","sub_chapter":"","guideline":"תנאי להפקדת תכנית מפורטת נוספת מעבר לתכנית הראשונה, הוא אישור הועדה המקצועית למים וביוב כי תכנית אב מעודכנת לביוב של הרצליה ורמה\"ש עונה על דרישות סעיף 13 לתמ\"א 34.","condition":"","exception":"","section":"14.6.7"},{"chapter":"תנאים למתן תוקף לתכניות מפורטות:","sub_chapter":"","guideline":"תנאי לאישור תכנית מפורטת הינו ביצוע טיהור המתחם בשלמותו.","condition":"","exception":"","section":"1.7.7"},{"chapter":"תנאים למתן תוקף לתכניות מפורטות:","sub_chapter":"","guideline":"ככל שקיים מחוץ לשטח התכנית מוקד זיהום, שלפי הנתונים הנו מסכן את שטח התכנית המפורטת, יש לפעול לטיהורו כתנאי לאישור התכנית.","condition":"","exception":"","section":"1.7.7"},{"chapter":"תנאים למתן תוקף לתכניות מפורטות:","sub_chapter":"","guideline":"תנאי לאישור תכנית מפורטת, למעט תכנית צור, יהיה קביעת הוראה ולפיה תנאי למתן היתרי בניה מכוחן , יהיה אישור תכנית האב לביוב של הרצליה ורמה\"ש ואישור תכניות הנדסיות של מים וביוב על ידי הועדה המקצועית לביוב שליד הועדה המחוזית.","condition":"","exception":"","section":"5.7.7"},{"chapter":"תנאים למתן תוקף לתכניות מפורטות:","sub_chapter":"","guideline":"תכנית הכוללת חציית עורק ניקוז משני על ידי קווי תשתית, דרכים ומסילות ברזל,  תאושר רק לאחר קבלת חוות דעת של רשות הניקוז שהתכנית חלה בתחומה.","condition":"","exception":"","section":"8.7.7"},{"chapter":"הוראות מיוחדות לאזורי ייעוד:","sub_chapter":"","guideline":"בשטח ציבורי פתוח  המלווה עורקי מים כמשמעותם בחוק הניקוז,  תותר הצפתו במי נגר בהתאם להוראות בנספחי התשתית.","condition":"","exception":"","section":"4.8"},{"chapter":"הוראות מיוחדות לאזורי ייעוד:","sub_chapter":"מתקנים הנדסיים:","guideline":"על שטחים המיועדים בתכנית זו (ובתכנית מפורטת שתוכן) למתקני תשתית מים, ביוב וניקוז יחולו הוראות חוק התו\"ב.","condition":"","exception":"","section":"7.8"},{"chapter":"הוראות מיוחדות לאזורי ייעוד:","sub_chapter":"מתקנים הנדסיים:","guideline":"על מתקני ומפעלי ביוב, מתקני איסוף, שאיבה או קווי הולכה יחולו  הוראות חוק הרשויות המקומיות (ביוב) התשכ\"ב - 1962 על תיקוניו.","condition":"","exception":"","section":"7.8"},{"chapter":"הוראות מיוחדות לאזורי ייעוד:","sub_chapter":"מתקנים הנדסיים:","guideline":"לצורך התקנת והנחת צנרת ומתקני תשתית תהיה הרשות המקומית, או כל רשות מוסמכת, רשאית לבצע חפירה, התקנה והנחת צינורות בכל קרקע, וכן תהיה לה זכות גישה לכל קרקע כאמור לשם ביצוע עבודות אחזקה ותיקונים.","condition":"","exception":"","section":"7.8"},{"chapter":"תשתיות:","sub_chapter":"","guideline":"כל התשתיות תהיינה תת קרקעיות: חשמל מתח עליון גבוה ונמוך, בזק, תאורה, תשתית,  לרבות הזנות החשמל למבנים.","condition":"","exception":"","section":"7.8"},{"chapter":"תשתיות:","sub_chapter":"","guideline":"קווי התשתית יבוצעו על פי נספחי ותכניות התשתית לאחר היוועצות ברשות המוסמכת.","condition":"","exception":"","section":""},{"chapter":"תשתיות:","sub_chapter":"","guideline":"קו מתח עליון לאורך דרך 4 וקווי חשמל לרכבת הקלה או  למסילת ברזל - אינם נדרשים להיות תת קרקעיים.","condition":"","exception":"","section":"11.2"},{"chapter":"ייעודי קרקע","sub_chapter":"איזור מע\"ר ומגורים","guideline":"מרכז תחבורה","condition":"לא תופקד תכנית מפורטת לאזור מע\"ר ומגורים שבתחום 4, \nאלא אם תכלול שימוש מיוחד למרכז תחבורה, \nאו אם הופקד כבר מרכז תחבורה בתכנית אחרת.","exception":"","section":"1.4.4.ג"},{"chapter":"ייעודי קרקע","sub_chapter":"מרכז תחבורה ושירותים","guideline":"שימושים ראשיים: דרכים ושטחי חנייה, מסילות ברזל, תחנות רכבת, אוטובוסים ומוניות.","condition":"","exception":"","section":"1.6.4.א"},{"chapter":"ייעודי קרקע","sub_chapter":"שטח למתקנים הנדסיים","guideline":"בתכניות המפורטות יקבע סימון מחייב ותנאים נוספים לעניין מיקום וגודל השטח של מתקנים כולל קידוחים לטיפול במים וקידוחים לצרכים אחרים","condition":"לאחר חו\"ד של רשות המים שתינתן מתוך חודש מקבלת מסמכי התכנית והכל על פי הוראות תמ\"א 34/ב/5","exception":"","section":"2.15.4.ב"}];
+
+const CHAPTER_ICONS = {
+  "תכליות ושימושים": "🎯", "ייעודי קרקע": "🏘️",
+  "עקרונות  הבינוי והנחיות להכנת מפורטות:": "📐",
+  "הגשת תכנית מפורטת": "📋", "תנאים להפקדת תכניות מפורטות:": "🔒",
+  "תנאים למתן תוקף לתכניות מפורטות:": "✅",
+  "הוראות מיוחדות לאזורי ייעוד:": "📍", "תשתיות:": "⚙️"
+};
+
+let currentFilter = 'all', currentSearch = '', activeChapter = null;
+let isAdmin = false, editIdx = null;
+
+// ── PASSWORD ──
+function openPw() {
+  if (isAdmin) { exitAdmin(); return; }
+  document.getElementById('pw-overlay').classList.add('open');
+  setTimeout(() => document.getElementById('pw-input').focus(), 80);
+}
+function closePw() {
+  document.getElementById('pw-overlay').classList.remove('open');
+  document.getElementById('pw-input').value = '';
+  document.getElementById('pw-error').textContent = '';
+}
+function checkPassword() {
+  const v = document.getElementById('pw-input').value;
+  if (v === ADMIN_PASSWORD) {
+    closePw(); enterAdmin();
+  } else {
+    const inp = document.getElementById('pw-input');
+    inp.classList.add('shake');
+    document.getElementById('pw-error').textContent = 'סיסמה שגויה';
+    setTimeout(() => inp.classList.remove('shake'), 400);
+    inp.select();
+  }
+}
+document.getElementById('pw-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') checkPassword();
+  if (e.key === 'Escape') closePw();
+});
+document.getElementById('pw-overlay').addEventListener('click', e => { if (e.target.id === 'pw-overlay') closePw(); });
+
+// ── ADMIN MODE ──
+function enterAdmin() {
+  isAdmin = true;
+  document.getElementById('admin-btn').classList.add('active');
+  document.getElementById('admin-btn').textContent = '✏️ עריכה פעילה';
+  document.getElementById('edit-banner').classList.add('visible');
+  document.getElementById('main').classList.add('edit-mode');
+  renderMain();
+}
+function exitAdmin() {
+  isAdmin = false;
+  document.getElementById('admin-btn').classList.remove('active');
+  document.getElementById('admin-btn').textContent = '🔒 מצב עריכה';
+  document.getElementById('edit-banner').classList.remove('visible');
+  document.getElementById('main').classList.remove('edit-mode');
+  renderMain();
+}
+
+// ── EDIT MODAL ──
+function openEdit(idx) {
+  if (!isAdmin) return;
+  editIdx = idx;
+  const d = DATA[idx];
+  document.getElementById('e-chapter').value = d.chapter;
+  document.getElementById('e-sub').value = d.sub_chapter;
+  document.getElementById('e-guideline').value = d.guideline;
+  document.getElementById('e-condition').value = d.condition;
+  document.getElementById('e-exception').value = d.exception;
+  document.getElementById('e-section').value = d.section;
+  document.getElementById('edit-overlay').classList.add('open');
+  setTimeout(() => document.getElementById('e-guideline').focus(), 80);
+}
+function closeEdit() {
+  document.getElementById('edit-overlay').classList.remove('open');
+  editIdx = null;
+}
+function saveEdit() {
+  if (editIdx === null) return;
+  DATA[editIdx] = {
+    chapter: document.getElementById('e-chapter').value.trim(),
+    sub_chapter: document.getElementById('e-sub').value.trim(),
+    guideline: document.getElementById('e-guideline').value.trim(),
+    condition: document.getElementById('e-condition').value.trim(),
+    exception: document.getElementById('e-exception').value.trim(),
+    section: document.getElementById('e-section').value.trim(),
+  };
+  closeEdit(); renderSidebar(); renderMain();
+}
+function deleteItem() {
+  if (editIdx === null) return;
+  if (!confirm('למחוק הנחיה זו לצמיתות?')) return;
+  DATA.splice(editIdx, 1);
+  closeEdit(); renderSidebar(); renderMain();
+}
+document.getElementById('edit-overlay').addEventListener('click', e => { if (e.target.id === 'edit-overlay') closeEdit(); });
+document.getElementById('add-overlay').addEventListener('click', e => { if (e.target.id === 'add-overlay') closeAdd(); });
+
+// ── ADD NEW ──
+function openAdd() {
+  // Populate autocomplete lists
+  const chapters = [...new Set(DATA.map(d=>d.chapter))];
+  const subs = [...new Set(DATA.map(d=>d.sub_chapter).filter(Boolean))];
+  document.getElementById('chapter-list').innerHTML = chapters.map(c=>`<option value="${c}">`).join('');
+  document.getElementById('sub-list').innerHTML = subs.map(s=>`<option value="${s}">`).join('');
+  // Clear fields
+  ['a-chapter','a-sub','a-guideline','a-condition','a-exception','a-section'].forEach(id => {
+    const el = document.getElementById(id);
+    el.value = '';
+  });
+  document.getElementById('add-overlay').classList.add('open');
+  setTimeout(() => document.getElementById('a-chapter').focus(), 80);
+}
+function closeAdd() {
+  document.getElementById('add-overlay').classList.remove('open');
+}
+function saveAdd() {
+  const chapter = document.getElementById('a-chapter').value.trim();
+  const guideline = document.getElementById('a-guideline').value.trim();
+  if (!chapter || !guideline) {
+    alert('שדות פרק והנחיה הם חובה');
+    return;
+  }
+  DATA.push({
+    chapter,
+    sub_chapter: document.getElementById('a-sub').value.trim(),
+    guideline,
+    condition: document.getElementById('a-condition').value.trim(),
+    exception: document.getElementById('a-exception').value.trim(),
+    section: document.getElementById('a-section').value.trim(),
+  });
+  closeAdd();
+  renderSidebar();
+  renderMain();
+  // Scroll to the chapter where item was added
+  setTimeout(() => goToChapter(chapter), 200);
+}
+
+// ── EXPORT ──
+function exportHTML() {
+  const src = document.documentElement.outerHTML;
+  // Replace the DATA array in the source with the current (edited) DATA
+  const marker = 'let DATA = [';
+  const start = src.indexOf(marker);
+  const end = src.indexOf('];', start) + 2;
+  const updated = src.slice(0, start) + 'let DATA = ' + JSON.stringify(DATA) + ';' + src.slice(end);
+  const blob = new Blob([updated], { type: 'text/html;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'מדריך_הנחיות_תכנון_מעודכן.html';
+  a.click();
+}
+
+// ── RENDER ──
+function getChapters() {
+  const ch = {};
+  DATA.forEach(d => { ch[d.chapter] = (ch[d.chapter] || 0) + 1; });
+  return ch;
+}
+function hl(text, q) {
+  if (!q || !text) return text || '';
+  return text.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'), '<mark>$1</mark>');
+}
+function matchFilter(d) {
+  if (currentFilter === 'has_condition') return !!d.condition;
+  if (currentFilter === 'has_exception') return !!d.exception;
+  if (currentFilter === 'has_section') return !!d.section;
+  return true;
+}
+function matchSearch(d) {
+  if (!currentSearch) return true;
+  const q = currentSearch.toLowerCase();
+  return (d.guideline+d.condition+d.exception+d.section+d.chapter+d.sub_chapter).toLowerCase().includes(q);
+}
+
+function renderSidebar() {
+  const chapters = getChapters();
+  let html = `<div class="sidebar-section-label">פרקים</div>`;
+  Object.entries(chapters).forEach(([ch, count]) => {
+    html += `<div class="chapter-nav-item ${activeChapter===ch?'active':''}" onclick="goToChapter('${ch.replace(/'/g,"\\'")}')" data-chapter="${ch}">
+      ${CHAPTER_ICONS[ch]||'📄'} ${ch.replace(':','')}
+      <span class="chapter-count">${count}</span>
+    </div>`;
+  });
+  document.getElementById('sidebar').innerHTML = html;
+  document.getElementById('total-guidelines').textContent = DATA.length;
+  document.getElementById('total-chapters').textContent = Object.keys(chapters).length;
+  document.getElementById('total-conditions').textContent = DATA.filter(d=>d.condition).length;
+}
+
+function goToChapter(ch) {
+  const el = document.getElementById('ch-' + CSS.escape(ch));
+  if (el) { el.scrollIntoView({behavior:'smooth',block:'start'}); activeChapter=ch; renderSidebar(); }
+}
+
+function renderMain() {
+  const filtered = DATA.map((d,i)=>({...d,_i:i})).filter(d=>matchFilter(d)&&matchSearch(d));
+  const main = document.getElementById('main');
+  if (!filtered.length) {
+    main.innerHTML = `<div class="empty-state"><div class="icon">🔍</div><h3>לא נמצאו תוצאות</h3><p>נסי חיפוש אחר</p></div>`;
+    return;
+  }
+  const byChapter = {};
+  filtered.forEach(d => {
+    if (!byChapter[d.chapter]) byChapter[d.chapter] = {};
+    const sub = d.sub_chapter || '__';
+    if (!byChapter[d.chapter][sub]) byChapter[d.chapter][sub] = [];
+    byChapter[d.chapter][sub].push(d);
+  });
+
+  let html = `<div class="result-info">מציג <span class="count">${filtered.length}</span> הנחיות${currentSearch?` המכילות "<strong>${currentSearch}</strong>"`:' בסך הכל'}${currentFilter!=='all'?' (מסונן)':''}${isAdmin?' &nbsp;|&nbsp; <strong style="color:var(--edit-accent)">✏️ לחצי על כרטיסייה לעריכה</strong>':''}</div>`;
+
+  Object.entries(byChapter).forEach(([ch, subs]) => {
+    const total = Object.values(subs).flat().length;
+    html += `<div class="chapter-section" id="ch-${CSS.escape(ch)}">
+      <div class="chapter-header">
+        <div class="chapter-icon">${CHAPTER_ICONS[ch]||'📄'}</div>
+        <div class="chapter-title">${ch.replace(':','')}</div>
+        <span class="chapter-badge">${total} הנחיות</span>
+      </div>`;
+
+    Object.entries(subs).forEach(([sub, items]) => {
+      if (sub !== '__') html += `<div class="sub-chapter-group"><div class="sub-chapter-label">${sub}</div>`;
+      items.forEach(item => {
+        const hasC=!!item.condition, hasE=!!item.exception;
+        const cls = hasC&&hasE?'has-both':hasC?'has-condition':hasE?'has-exception':'';
+        const click = isAdmin ? `onclick="openEdit(${item._i})"` : '';
+        html += `<div class="guideline-card ${cls}" ${click}>
+          <div class="edit-icon">✏️</div>
+          <div class="guideline-main">${hl(item.guideline,currentSearch)}</div>
+          <div class="guideline-meta">
+            ${hasC?`<div class="meta-block meta-condition"><div class="meta-label">🔶 התניה</div><div class="meta-text">${hl(item.condition,currentSearch)}</div></div>`:''}
+            ${hasE?`<div class="meta-block meta-exception"><div class="meta-label">🔷 יוצא דופן / חריג</div><div class="meta-text">${hl(item.exception,currentSearch)}</div></div>`:''}
+          </div>
+          ${item.section?`<span class="section-tag">📌 סעיף ${item.section}</span>`:''}
+        </div>`;
+      });
+      if (sub !== '__') html += `</div>`;
+    });
+    html += `</div>`;
+  });
+  main.innerHTML = html;
+}
+
+// ── EVENTS ──
+document.getElementById('filter-tags').addEventListener('click', e => {
+  if (!e.target.classList.contains('filter-tag')) return;
+  document.querySelectorAll('.filter-tag').forEach(t=>t.classList.remove('active'));
+  e.target.classList.add('active');
+  currentFilter = e.target.dataset.filter;
+  renderMain();
+});
+let st;
+document.getElementById('search').addEventListener('input', e => {
+  clearTimeout(st);
+  st = setTimeout(() => {
+    currentSearch = e.target.value.trim();
+    renderMain();
+    // Toggle searching highlight class
+    const ri = document.querySelector('.result-info');
+    if (ri) ri.classList.toggle('searching', !!currentSearch);
+  }, 200);
+});
+
+function initObserver() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        activeChapter = e.target.id.replace('ch-','');
+        document.querySelectorAll('.chapter-nav-item').forEach(el =>
+          el.classList.toggle('active', el.dataset.chapter === activeChapter));
+      }
+    });
+  }, {threshold: 0.2});
+  document.querySelectorAll('.chapter-section').forEach(s=>obs.observe(s));
+}
+
+renderSidebar();
+renderMain();
+setTimeout(initObserver, 100);
+</script>
+
+
+</body></html>
